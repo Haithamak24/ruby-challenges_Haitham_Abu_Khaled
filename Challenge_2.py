@@ -1,5 +1,9 @@
 # Function to find the missing numbers in a sequence
 def find_the_missing_numbers(sequence):
+        # Ensure the sequence has at least two numbers
+    if len(sequence) < 2:
+        return "The sequence must contain at least two numbers."
+
     # Find the minimum and maximum numbers in the sequence (This will help us on Creating the full range of numbers)
     minimum = min(sequence)
     maximum = max(sequence)
@@ -14,16 +18,20 @@ def find_the_missing_numbers(sequence):
 
 # Input and function call
 try:
-    # Get the user input and converting it to a list of integers
-    sequence = list(map(int, input("Enter numbers separated by spaces: ").split())) # I used map() to convert the input to integers
+    # Get user input and convert it to a list of integers
+    sequence = list(map(int, input("Enter numbers separated by spaces: ").split()))
     
-    # Call the function and print the missing numbers
-    missing = find_the_missing_numbers(sequence) # I stored the missing numbers in a variable to check if there are any missing numbers or not 
-    
-    if missing: 
-        print("Missing numbers:", missing)
+    # Check if the input list has at least two numbers
+    if len(sequence) < 2:
+        print("The sequence must contain at least two numbers.")
     else:
-        print("No missing numbers.")
+        # Call the function and print the missing numbers
+        missing = find_the_missing_numbers(sequence)
+        
+        if missing:
+            print("Missing numbers:", missing)
+        else:
+            print("No missing numbers.")
         
 except ValueError:
     print("Invalid input! Please enter only numbers.")
